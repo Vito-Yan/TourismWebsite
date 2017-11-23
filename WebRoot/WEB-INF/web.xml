@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" version="3.0">
+  
+  <!--字符编码过滤器-->
+  <filter>
+     <filter-name>Encoding</filter-name>
+     <filter-class>com.cn.filter.EncodingFilter</filter-class>
+  </filter>
+  
+  <filter-mapping>
+      <filter-name>Encoding</filter-name>
+      <url-pattern>/*</url-pattern>
+  </filter-mapping>
+  <!--Session失效过滤器--> 
+  <filter>
+     <filter-name>SessionTimeout</filter-name>
+     <filter-class>com.cn.filter.SessionTimeoutFilter</filter-class>
+  </filter>
+
+  <filter-mapping>
+      <filter-name>SessionTimeout</filter-name>
+      <url-pattern>/admin/*</url-pattern>
+  </filter-mapping>
+  
+  <servlet>
+    <servlet-name>AdminManagerServlet</servlet-name>
+    <servlet-class>com.cn.servlet.AdminManagerServlet</servlet-class>
+    <init-param>
+       <param-name>SAVEPATH</param-name>
+       <param-value>upload</param-value>
+    </init-param>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>AdminManagerServlet</servlet-name>
+    <url-pattern>/AdminManagerServlet</url-pattern>
+  </servlet-mapping>
+ 
+ <!--验证码-->
+  <servlet>
+    <servlet-name>VerificationCode</servlet-name>
+    <servlet-class>com.cn.utils.VerificationCode</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>VerificationCode</servlet-name>
+    <url-pattern>/VerificationCode</url-pattern>
+  </servlet-mapping> 
+
+  <!--客户管理-->
+  <servlet>
+    <servlet-name>CustomerManagerServlet</servlet-name>
+    <servlet-class>com.cn.servlet.CustomerManagerServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>LineManagerServlet</servlet-name>
+    <servlet-class>com.cn.servlet.LineManagerServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>ShoppingCarManagerServlet</servlet-name>
+    <servlet-class>com.cn.servlet.ShoppingCarManagerServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>OrderManagerServlet</servlet-name>
+    <servlet-class>com.cn.servlet.OrderManagerServlet</servlet-class>
+  </servlet>
+    <servlet>
+    <servlet-name>TeamBuyManagerServlet</servlet-name>
+    <servlet-class>com.cn.servlet.TeamBuyManagerServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CustomerManagerServlet</servlet-name>
+    <url-pattern>/CustomerManagerServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>LineManagerServlet</servlet-name>
+    <url-pattern>/LineManagerServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>ShoppingCarManagerServlet</servlet-name>
+    <url-pattern>/ShoppingCarManagerServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>OrderManagerServlet</servlet-name>
+    <url-pattern>/OrderManagerServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>TeamBuyManagerServlet</servlet-name>
+    <url-pattern>/TeamBuyManagerServlet</url-pattern>
+  </servlet-mapping>
+  	
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+  </welcome-file-list>
+</web-app>
